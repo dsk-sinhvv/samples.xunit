@@ -4,7 +4,7 @@ jobs:
   restore:
     docker:
       - image: ubuntu:22.04
-    working_directory: ~/app
+    working_directory: ~/samples.xunit
     steps:
       - checkout
 
@@ -15,7 +15,7 @@ jobs:
             apt-get install -y wget apt-transport-https software-properties-common
 
       - run:
-          name: Install Microsoft package repository
+          name: Add Microsoft package repository
           command: |
             wget https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
             dpkg -i packages-microsoft-prod.deb
@@ -23,17 +23,17 @@ jobs:
             apt-get update
 
       - run:
-          name: Install .NET SDK 9.0.100
+          name: Install .NET SDK 9.0
           command: |
             apt-get install -y dotnet-sdk-9.0
 
       - run:
-          name: Verify dotnet version
+          name: Show .NET version
           command: dotnet --info
 
       - run:
           name: Restore NuGet packages
-          command: dotnet restore
+          command: dotnet restore v3/Samples.v3.sln
 
 workflows:
   version: 2
