@@ -1,49 +1,32 @@
 version: 2.1
 
+executors:
+  dotnet8:
+    docker:
+      - image: mcr.microsoft.com/dotnet/sdk:8.0
+    working_directory: ~/samples.xunit
+
 jobs:
   build-and-test:
-    docker:
-      - image: ubuntu:22.04
-    working_directory: ~/samples.xunit
+    executor: dotnet8
     steps:
       - checkout
-
-      - run:
-          name: Install prerequisites
-          command: |
-            apt-get update
-            apt-get install -y wget apt-transport-https software-properties-common
-
-      - run:
-          name: Add Microsoft package repository
-          command: |
-            wget https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
-            dpkg -i packages-microsoft-prod.deb
-            rm packages-microsoft-prod.deb
-            apt-get update
-
-      - run:
-          name: Install .NET SDK 9.0
-          command: |
-            apt-get install -y dotnet-sdk-9.0
 
       - run:
           name: Show .NET SDK version
           command: dotnet --info
 
       - run:
-          name: Restore NuGet packages
+          name: Restore packages
           command: dotnet restore v3/Samples.v3.sln
 
       - run:
-          name: Build solution (Release)
+          name: Build solution
           command: dotnet build v3/Samples.v3.sln --no-restore --configuration Release
 
       - run:
-          name: Run tests for net8.0 (safe logger)
-          command: |
-            export TERM=dumb
-            dotnet test v3/Samples.v3.sln --no-build --configuration Release --framework net8.0 --nologo
+          name: Run tests
+          command: dotnet test v3/Samples.v3.sln --no-build --configuration Release --nologo
 
 workflows:
   version: 2
