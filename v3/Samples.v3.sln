@@ -14,8 +14,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Meta", "_Meta", "{7A6FF478
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Fixture Examples", "Fixture Examples", "{592D764A-0E62-4513-9CD7-1141BE8074E1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyFixtureExample", "AssemblyFixtureExample\AssemblyFixtureExample.csproj", "{2F1018C6-74B4-45D6-AE9E-B9F56710D311}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseFixtureExample", "DatabaseFixtureExample\DatabaseFixtureExample.csproj", "{6B3585DF-339B-4E7F-A31B-51E496D8E0F8}"
 EndProject
 Global
@@ -24,10 +22,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2F1018C6-74B4-45D6-AE9E-B9F56710D311}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2F1018C6-74B4-45D6-AE9E-B9F56710D311}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2F1018C6-74B4-45D6-AE9E-B9F56710D311}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2F1018C6-74B4-45D6-AE9E-B9F56710D311}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6B3585DF-339B-4E7F-A31B-51E496D8E0F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6B3585DF-339B-4E7F-A31B-51E496D8E0F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B3585DF-339B-4E7F-A31B-51E496D8E0F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -37,7 +31,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{2F1018C6-74B4-45D6-AE9E-B9F56710D311} = {592D764A-0E62-4513-9CD7-1141BE8074E1}
 		{6B3585DF-339B-4E7F-A31B-51E496D8E0F8} = {592D764A-0E62-4513-9CD7-1141BE8074E1}
 	EndGlobalSection
 EndGlobal
