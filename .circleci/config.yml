@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  restore:
+  build-and-test:
     docker:
       - image: ubuntu:22.04
     working_directory: ~/samples.xunit
@@ -28,15 +28,23 @@ jobs:
             apt-get install -y dotnet-sdk-9.0
 
       - run:
-          name: Show .NET version
+          name: Show .NET SDK version
           command: dotnet --info
 
       - run:
           name: Restore NuGet packages
           command: dotnet restore v3/Samples.v3.sln
 
+      - run:
+          name: Build solution
+          command: dotnet build v3/Samples.v3.sln --no-restore --configuration Release
+
+      - run:
+          name: Run tests
+          command: dotnet test v3/Samples.v3.sln --no-build --configuration Release --logger:"console;verbosity=normal"
+
 workflows:
   version: 2
   build:
     jobs:
-      - restore
+      - build-and-test
