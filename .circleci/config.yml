@@ -36,12 +36,14 @@ jobs:
           command: dotnet restore v3/Samples.v3.sln
 
       - run:
-          name: Build solution
+          name: Build solution (Release)
           command: dotnet build v3/Samples.v3.sln --no-restore --configuration Release
 
       - run:
-          name: Run tests
-          command: dotnet test v3/Samples.v3.sln --no-build --configuration Release --logger:"console;verbosity=normal"
+          name: Run tests for net8.0 (safe logger)
+          command: |
+            export TERM=dumb
+            dotnet test v3/Samples.v3.sln --no-build --configuration Release --framework net8.0 --nologo
 
 workflows:
   version: 2
