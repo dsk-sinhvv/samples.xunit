@@ -3,7 +3,7 @@ version: 2.1
 executors:
   dotnet8:
     docker:
-      - image: mcr.microsoft.com/dotnet/sdk:8.0-nanoserver-ltsc2022
+      - image: mcr.microsoft.com/dotnet/sdk:8.0
     working_directory: ~/samples.xunit
 
 jobs:
